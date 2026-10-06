@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import include, path
 from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import TokenRefreshView
 
@@ -34,4 +34,6 @@ urlpatterns = [
     path("auth/refresh/", TokenRefreshView.as_view()),
     path("auth/me/", MeView.as_view()),
     path("admin/dashboard/", DashboardView.as_view()),
+    path("", include("cinema.public_urls")),
+    path("", include("bookings.public_urls")),
 ] + router.urls
